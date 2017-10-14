@@ -1,0 +1,6 @@
+# Python related
+*.pyc
+
+# IDEA related
+*.iml
+idea/
