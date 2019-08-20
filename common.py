@@ -70,7 +70,7 @@ def get_access_token(ck, cs):
 def load_credentials():
     try:
         with open('.twitter_credentials.yml') as f:
-            c = yaml.load(f)
+            c = yaml.load(f, Loader=yaml.FullLoader)
             return c['consumer_key'], c['consumer_secret'], c['access_token'], \
                    c['access_token_secret']
     except IOError:
@@ -105,3 +105,9 @@ consumer_key, consumer_secret, access_token, access_token_secret = credentials
 
 api = twitter.Api(consumer_key=consumer_key, consumer_secret=consumer_secret, access_token_key=access_token,
                   access_token_secret=access_token_secret)
+
+try:
+    api.VerifyCredentials()
+except TwitterError:
+    print('User logged out')
+    exit(0)

@@ -4,6 +4,7 @@
 # IDEA related
 *.iml
 idea/
+.idea/
 
 # VS code related
 .vscode/
@@ -11,7 +12,6 @@ idea/
 
 .twitter_credentials.yml
 
-block_failed_ids.list
-unblock_failed_ids.list
+*.list
 
 friends.xlsx
