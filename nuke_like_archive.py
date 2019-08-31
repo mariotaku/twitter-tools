@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 import concurrent.futures
 import json
+import sys
 
 from twitter import TwitterError
 
-from common import confirm, api
-import sys
+import common
+from common import confirm
 
+api = common.api()
 likes = []
 
 with open(sys.argv[-1], encoding='utf-8') as f:

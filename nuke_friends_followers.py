@@ -3,7 +3,10 @@ import concurrent.futures
 
 from twitter import TwitterError
 
-from common import confirm, api
+import common
+from common import confirm
+
+api = common.api()
 
 friend_ids_cursor = -1
 friend_ids = []

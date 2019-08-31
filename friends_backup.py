@@ -2,7 +2,9 @@
 
 from openpyxl import Workbook
 
-from common import api, confirm
+import common
+
+api = common.api()
 
 friends_cursor = -1
 friends = []
