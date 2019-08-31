@@ -83,13 +83,13 @@ def load_credentials():
 
 
 def get_credentials(crds):
-    ckcs_set = False
-    ck = crds['ck']
-    cs = crds['cs']
+    ck = None
+    cs = None
     if crds and crds['ck'] and crds['cs']:
         if not confirm('Do you need to use new consumer key/secret?', default=False):
-            ckcs_set = True
-    if not ckcs_set:
+            ck = crds['ck']
+            cs = crds['cs']
+    if ck is None or cs is None:
         ck = input('Input consumer key: ')
         cs = input('Input consumer secret: ')
 
