@@ -66,8 +66,12 @@ def delete_tweet(tid):
     try:
         print('deleting %s' % tid)
         api.DestroyStatus(tid)
-    except TwitterError:
-        delete_failed_ids.append(tid)
+    except TwitterError as te:
+        err_body = te.message[0]
+        err_code = err_body['code']
+        if err_code != 144:
+            print('deleting %s failed: %s' % (tid, err_body))
+            delete_failed_ids.append(tid)
 
 
 try:
