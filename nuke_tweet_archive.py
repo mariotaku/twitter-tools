@@ -30,7 +30,7 @@ tweets = []
 
 
 def filter_by_args(tweet):
-    created_at = to_datetime(tweet['created_at'])
+    created_at = to_datetime(tweet['tweet']['created_at'])
     if filter_since is not None and created_at < filter_since:
         return False
     if filter_until is not None and created_at > filter_until:
@@ -76,7 +76,7 @@ def delete_tweet(tid):
 
 try:
     for tweet in tweets:
-        executor.submit(delete_tweet, tweet['id'])
+        executor.submit(delete_tweet, tweet['tweet']['id'])
     executor.shutdown(wait=True)
 except (KeyboardInterrupt, SystemExit):
     cancelled = True
