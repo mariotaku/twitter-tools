@@ -25,7 +25,7 @@ while follower_ids_cursor != 0:
     follower_ids_cursor, _, followers = api.GetFollowersPaged(cursor=follower_ids_cursor)
     fetched += len(followers)
     protected_batch = list(map(lambda x: x.id, filter(lambda x: x.protected, followers)))
-    print('Fetched %d/%d (%d protected in this batch)', fetched, me.followers_count, len(protected_batch))
+    print('Fetched %d/%d (%d protected in this batch)' % (fetched, me.followers_count, len(protected_batch)))
     protected_follower_ids += protected_batch
 print('You have %d protected followers' % len(protected_follower_ids))
 
