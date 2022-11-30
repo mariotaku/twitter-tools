@@ -116,7 +116,8 @@ def api():
 
     a = twitter.Api(consumer_key=credentials['ck'], consumer_secret=credentials['cs'],
                     access_token_key=credentials['at'],
-                    access_token_secret=credentials['ats'])
+                    access_token_secret=credentials['ats'],
+                    sleep_on_rate_limit=True)
 
     try:
         a.VerifyCredentials()
@@ -132,6 +133,7 @@ def argparse_date(date_str):
         return datetime.strptime(date_str, '%Y-%m-%d')
     except ValueError:
         raise argparse.ArgumentTypeError(f'Unrecognized date {date_str}')
+
 
 def to_datetime(datestring):
     time_tuple = parsedate_tz(datestring.strip())
