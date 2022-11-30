@@ -102,6 +102,11 @@ def get_credentials(crds):
 
 
 def api():
+    a, me = api2()
+    return a
+
+
+def api2():
     credentials = load_credentials()
 
     if not credentials or confirm('Do you want to switch to a new user?', default=False):
@@ -120,12 +125,12 @@ def api():
                     sleep_on_rate_limit=True)
 
     try:
-        a.VerifyCredentials()
+        me = a.VerifyCredentials()
     except TwitterError:
         print('User logged out')
         exit(0)
 
-    return a
+    return a, me
 
 
 def argparse_date(date_str):
