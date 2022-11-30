@@ -13,5 +13,5 @@ idea/
 .twitter_credentials.yml
 
 *.list
-
-friends.xlsx
+*.json
+*.xlsx
