@@ -72,7 +72,7 @@ with Path(data_dir.parent, 'Your threads.html').open(mode='w', encoding='utf-8')
         print(f'<h2>Thread posted at {created_at}</h2>', file=f)
 
         def print_tweet(t):
-            print(f'<p>{html.escape(t["full_text"])}</p>'.replace('\n', '<br>'), file=f)
+            print(f'<p>{html.escape(html.unescape(t["full_text"]))}</p>'.replace('\n', '<br>'), file=f)
             if 'extended_entities' in t:
                 entities = t['extended_entities']
                 if 'media' in entities:
