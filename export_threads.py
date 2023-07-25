@@ -7,7 +7,12 @@ from pathlib import Path
 
 tweets = {}
 
-data_dir = Path(sys.argv[1])
+data_dir = Path('data', sys.argv[1])
+
+if not data_dir.is_dir():
+    print('Usage: export_threads.py /path/to/extracted/archive', file=sys.stderr)
+    exit(1)
+
 for entry in data_dir.iterdir():
     if entry.name == 'tweets.js' or entry.name.startswith('tweets-part'):
         with entry.open(encoding='utf-8') as f:
@@ -70,6 +75,7 @@ with Path(data_dir.parent, 'Your threads.html').open(mode='w', encoding='utf-8')
         print('<article>', file=f)
         created_at = tweet_created_at(thread).strftime('%Y-%m-%d')
         print(f'<h2>Thread posted at {created_at}</h2>', file=f)
+
 
         def print_tweet(t):
             print(f'<p>{html.escape(html.unescape(t["full_text"]))}</p>'.replace('\n', '<br>'), file=f)
