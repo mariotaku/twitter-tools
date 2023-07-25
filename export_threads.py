@@ -7,7 +7,7 @@ from pathlib import Path
 
 tweets = {}
 
-data_dir = Path('data', sys.argv[1])
+data_dir = Path(sys.argv[1], 'data')
 
 if not data_dir.is_dir():
     print('Usage: export_threads.py /path/to/extracted/archive', file=sys.stderr)
